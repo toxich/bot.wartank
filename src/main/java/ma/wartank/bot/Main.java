@@ -1,5 +1,10 @@
 package ma.wartank.bot;
 
+import java.io.IOException;
+
+import ma.wartank.bot.pages.LoginPage;
+import ma.wartank.bot.pages.PageBase;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -13,19 +18,20 @@ public class Main {
         driver = new FirefoxDriver(desiredCapabilities);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Main main = new Main(args);
         main.run();
-
     }
 
-    private void run() {
-        driver.get("http://wartank.ru");
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    private void run() throws IOException {
+        PageBase.setDriver(driver);
+        new LoginPage()
+            .open()
+            .login("tcc", "tccwartank");
+
+        System.out.println("AAA");
+        System.in.read();
+        driver.quit();
     }
 
 }
