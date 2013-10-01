@@ -1,6 +1,5 @@
 package ma.wartank.bot.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -31,11 +30,11 @@ public class LoginPage extends PageBase<LoginPage>{
         return this;
     }
 
-    public LoginPage login(String name, String password) {
+    public AngarPage login(String name, String password) {
         enterLogin(name);
         enterPassword(password);
         pressEnterBtn();
-        return this;
+        return alreadyOpened(new AngarPage());
     }
 
     public String getBaseUrl() {

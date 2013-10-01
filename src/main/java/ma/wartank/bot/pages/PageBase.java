@@ -16,13 +16,17 @@ public abstract class PageBase<SELF_TYPE extends PageBase<SELF_TYPE>> {
     public SELF_TYPE open() {
         driver.get(getBaseUrl());
 
-        return alreadyOpened();
+        return opened();
     }
 
 
     @SuppressWarnings("unchecked")
-    private SELF_TYPE alreadyOpened() {
+    public SELF_TYPE opened() {
         PageFactory.initElements(driver, this);
         return ((SELF_TYPE) this);
+    }
+
+    public static<T extends PageBase<T>> T alreadyOpened(T page) {
+        return page.opened();
     }
 }

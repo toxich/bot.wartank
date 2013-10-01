@@ -2,6 +2,7 @@ package ma.wartank.bot;
 
 import java.io.IOException;
 
+import ma.wartank.bot.pages.AngarPage;
 import ma.wartank.bot.pages.LoginPage;
 import ma.wartank.bot.pages.PageBase;
 
@@ -19,17 +20,17 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        Main main = new Main(args);
-        main.run();
+        new Main(args).run();
     }
 
     private void run() throws IOException {
         PageBase.setDriver(driver);
-        new LoginPage()
+        AngarPage angar =  new LoginPage()
             .open()
             .login("tcc", "tccwartank");
 
-        System.out.println("AAA");
+        System.out.println("Gold: " + angar.getGoldCount());
+        angar.openBuildings();
         System.in.read();
         driver.quit();
     }

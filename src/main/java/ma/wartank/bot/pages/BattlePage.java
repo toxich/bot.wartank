@@ -1,6 +1,6 @@
 package ma.wartank.bot.pages;
 
-public class AngarPage extends MainPageBase<AngarPage> {
+public class BattlePage extends MainPageBase<BattlePage> {
 
     @Override
     public String getBaseUrl() {
